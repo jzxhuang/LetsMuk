@@ -39,9 +39,17 @@ class _HomeState extends State<Home> {
         title: Text(widget.title),
         // elevation: 0.0,
         actions: <Widget>[
-          Text('Logout')
+          TextButton(
+            style: TextButton.styleFrom(
+              primary: Colors.white,
+            ),
+            child: Text('Logout'),
+            onPressed: () async {
+              await auth.signOut();
+            },
+          ),
 
-// This doesn't work
+          // This doesn't work
           // TextButton.icon(
           //   icon: Icon(Icons.person),
           //   label: Text('logout'),
