@@ -1,5 +1,5 @@
 module AgoraDynamicKey
-  class RTMTokenBuilder
+  class RtmTokenBuilder
     module Role
       RTM_USER = 1
     end

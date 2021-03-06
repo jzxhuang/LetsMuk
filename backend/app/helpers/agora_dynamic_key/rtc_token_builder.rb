@@ -1,6 +1,5 @@
 module AgoraDynamicKey
-
-  class RTCTokenBuilder
+  class RtcTokenBuilder
     class InvalidParamsError < StandardError
       attr_reader :params, :missing_keys
       def initialize args={}

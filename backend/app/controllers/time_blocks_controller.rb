@@ -1,6 +1,7 @@
 class TimeBlocksController < ApplicationController
+  include ::AgoraDynamicKey
+
   before_action :set_time_block, only: [:show, :update, :destroy]
-  require 'agora_dynamic_key'
 
   # GET /time_blocks
   def index
@@ -46,11 +47,11 @@ class TimeBlocksController < ApplicationController
       app_certificate: ENV['AGORA_APP_CERTIFICATE'],
       channel_name: params[:channel_name],
       uid: params[:user_id],
-      role: AgoraDynamicKey::RTCTokenBuilder::Role::PUBLISHER,
+      role: AgoraDynamicKey::RtcTokenBuilder::Role::PUBLISHER,
       privilege_expired_ts: Time.now.to_i + expiration_time_in_seconds
     }
 
-    result = AgoraDynamicKey::RTCTokenBuilder.build_token_with_uid(opts)
+    result = AgoraDynamicKey::RtcTokenBuilder.build_token_with_uid(opts)
 
     render json: result
   end
