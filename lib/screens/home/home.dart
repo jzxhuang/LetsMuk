@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:letsmuk/screens/videocall/index.dart';
 
 import 'package:letsmuk/services/auth.dart';
 
@@ -21,6 +22,50 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final AuthService auth = AuthService();
+
+  @override
+  Widget build(BuildContext context) {
+    // This method is rerun every time setState is called, for instance as done
+    // by the _incrementCounter method above.
+    //
+    // The Flutter framework has been optimized to make rerunning build methods
+    // fast, so that you can just rebuild anything that needs updating rather
+    // than having to individually change instances of widgets.
+    return Scaffold(
+      appBar: AppBar(
+        // Here we take the value from the Home object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(widget.title),
+        // elevation: 0.0,
+        actions: <Widget>[
+          TextButton(
+            style: TextButton.styleFrom(
+              primary: Colors.white,
+            ),
+            child: Text('Logout'),
+            onPressed: () async {
+              await auth.signOut();
+            },
+          ),
+
+          // This doesn't work
+          // TextButton.icon(
+          //   icon: Icon(Icons.person),
+          //   label: Text('logout'),
+          //   onPressed: () async {
+          //     await auth.signOut();
+          //   },
+          // ),
+        ],
+      ),
+      body: VideoCallHome(),
+    );
+  }
+}
+
+// Commenting out old code with counter stuff (to see how to use state)
+/* class _HomeState extends State<Home> {
   final AuthService auth = AuthService();
   int _counter = 0;
 
@@ -100,3 +145,4 @@ class _HomeState extends State<Home> {
     );
   }
 }
+ */

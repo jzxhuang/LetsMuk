@@ -1,7 +1,6 @@
 import 'package:letsmuk/services/auth.dart';
 import 'package:letsmuk/shared/constants.dart';
 import 'package:letsmuk/shared/loading.dart';
-import 'package:letsmuk/services/auth.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -41,61 +40,83 @@ class _SignInState extends State<SignIn> {
               ],
             ),
             body: Container(
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-              child: Form(
-                key: _formKey,
+                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
                 child: Column(
                   children: <Widget>[
-                    SizedBox(height: 20.0),
-                    TextFormField(
-                      decoration:
-                          textInputDecoration.copyWith(hintText: 'email'),
-                      validator: (val) => val.isEmpty ? 'Enter an email' : null,
-                      onChanged: (val) {
-                        setState(() => email = val);
-                      },
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(height: 20.0),
+                          TextFormField(
+                            decoration:
+                                textInputDecoration.copyWith(hintText: 'email'),
+                            validator: (val) =>
+                                val.isEmpty ? 'Enter an email' : null,
+                            onChanged: (val) {
+                              setState(() => email = val);
+                            },
+                          ),
+                          SizedBox(height: 20.0),
+                          TextFormField(
+                            obscureText: true,
+                            decoration: textInputDecoration.copyWith(
+                                hintText: 'password'),
+                            validator: (val) => val.length < 6
+                                ? 'Enter a password 6+ chars long'
+                                : null,
+                            onChanged: (val) {
+                              setState(() => password = val);
+                            },
+                          ),
+                          SizedBox(height: 20.0),
+                          ElevatedButton(
+                              child: Text(
+                                'Sign In',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              onPressed: () async {
+                                if (_formKey.currentState.validate()) {
+                                  setState(() => loading = true);
+                                  dynamic result =
+                                      await auth.signInWithEmailAndPassword(
+                                          email, password);
+                                  if (result == null) {
+                                    setState(() {
+                                      loading = false;
+                                      error =
+                                          'Could not sign in with those credentials';
+                                    });
+                                  }
+                                }
+                              }),
+                          SizedBox(height: 12.0),
+                          Text(
+                            error,
+                            style: TextStyle(color: Colors.red, fontSize: 14.0),
+                          ),
+                        ],
+                      ),
                     ),
-                    SizedBox(height: 20.0),
-                    TextFormField(
-                      obscureText: true,
-                      decoration:
-                          textInputDecoration.copyWith(hintText: 'password'),
-                      validator: (val) => val.length < 6
-                          ? 'Enter a password 6+ chars long'
-                          : null,
-                      onChanged: (val) {
-                        setState(() => password = val);
-                      },
-                    ),
-                    SizedBox(height: 20.0),
+                    // Google sign in
                     ElevatedButton(
                         child: Text(
-                          'Sign In',
+                          'Sign In With Google',
                           style: TextStyle(color: Colors.white),
                         ),
                         onPressed: () async {
-                          if (_formKey.currentState.validate()) {
-                            setState(() => loading = true);
-                            dynamic result = await auth
-                                .signInWithEmailAndPassword(email, password);
-                            if (result == null) {
-                              setState(() {
-                                loading = false;
-                                error =
-                                    'Could not sign in with those credentials';
-                              });
-                            }
+                          setState(() => loading = true);
+                          dynamic result = await auth.signInWithGoogle();
+                          if (result == null) {
+                            setState(() {
+                              loading = false;
+                              error =
+                                  'Could not sign in with those credentials';
+                            });
                           }
                         }),
-                    SizedBox(height: 12.0),
-                    Text(
-                      error,
-                      style: TextStyle(color: Colors.red, fontSize: 14.0),
-                    ),
                   ],
-                ),
-              ),
-            ),
+                )),
           );
   }
 }
