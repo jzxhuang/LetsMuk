@@ -1,5 +1,4 @@
 class TimeBlock < ApplicationRecord
-
   scope :after, ->(from_date) { where('start > ?', from_date) }
   scope :before, ->(to_date) { where('end < ?', to_date) }
   scope :user_id, ->(id) { where('user_id = ?', id) }

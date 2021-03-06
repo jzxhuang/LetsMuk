@@ -1,5 +1,6 @@
 class TimeBlocksController < ApplicationController
   before_action :set_time_block, only: [:show, :update, :destroy]
+  require 'agora_dynamic_key'
 
   # GET /time_blocks
   def index
@@ -36,6 +37,22 @@ class TimeBlocksController < ApplicationController
   # DELETE /time_blocks/1
   def destroy
     @time_block.destroy
+  end
+
+  def get_token
+    expiration_time_in_seconds = 100000
+    opts = {
+      app_id: ENV['AGORA_APP_ID'],
+      app_certificate: ENV['AGORA_APP_CERTIFICATE'],
+      channel_name: params[:channel_name],
+      uid: params[:user_id],
+      role: AgoraDynamicKey::RTCTokenBuilder::Role::PUBLISHER,
+      privilege_expired_ts: Time.now.to_i + expiration_time_in_seconds
+    }
+
+    result = AgoraDynamicKey::RTCTokenBuilder.build_token_with_uid(opts)
+
+    render json: result
   end
 
   private
