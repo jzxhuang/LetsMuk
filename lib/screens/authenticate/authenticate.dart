@@ -1,4 +1,3 @@
-import 'package:letsmuk/screens/authenticate/register.dart';
 import 'package:letsmuk/screens/authenticate/sign_in.dart';
 import 'package:flutter/material.dart';
 

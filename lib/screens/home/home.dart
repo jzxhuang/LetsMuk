@@ -1,11 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:letsmuk/screens/videocall/index.dart';
+
 import 'package:letsmuk/screens/homepage/index.dart';
 
-
 import 'package:letsmuk/services/auth.dart';
-import 'package:letsmuk/shared/avatar_image.dart';
 
 class Home extends StatefulWidget {
   Home({Key key, this.title, this.user}) : super(key: key);
@@ -39,53 +37,24 @@ class _HomeState extends State<Home> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-        appBar: AppBar(
-          // Here we take the value from the Home object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: Text(widget.title),
-          // elevation: 0.0,
-          actions: <Widget>[
-            TextButton(
-              style: TextButton.styleFrom(
-                primary: Colors.white,
-              ),
-              child: Text('Logout'),
-              onPressed: () async {
-                await auth.signOut();
-              },
+      appBar: AppBar(
+        // Here we take the value from the Home object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(widget.title),
+        // elevation: 0.0,
+        actions: <Widget>[
+          TextButton(
+            style: TextButton.styleFrom(
+              primary: Colors.white,
             ),
-          ],
-        ),
-      body: HomePage(),
-
-        // body: Container(
-        //   child: Column(
-        //     children: <Widget>[
-        //       Text(
-        //         "Hi ${widget.user.displayName.split(" ")[0]}!",
-        //         style: TextStyle(
-        //           color: Colors.black,
-        //         ),
-        //       ),
-        //       AvatarImage(imageUrl: widget.user.photoURL),
-        //       Padding(
-        //         padding: const EdgeInsets.symmetric(vertical: 8.0),
-        //         child: Text(
-        //           'TODO: Show a list of active meetings you can join',
-        //           style: TextStyle(
-        //             color: Colors.black,
-        //           ),
-        //         ),
-        //       ),
-        //       Text(
-        //         'TODO: put some stuff here related to starting a meeting?',
-        //         style: TextStyle(
-        //           color: Colors.black,
-        //         ),
-        //       ),
-        //       VideoCallHome(),
-        //     ],
+            child: Text('Logout'),
+            onPressed: () async {
+              await auth.signOut();
+            },
           ),
-        ));
+        ],
+      ),
+      body: HomePage(user: widget.user),
+    );
   }
 }
