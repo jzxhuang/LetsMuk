@@ -77,6 +77,9 @@ class IndexState extends State<HomePage> {
                   child: GestureDetector(
                       onTap: () {},
                       child: Card(
+                        shape: BeveledRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
                         child: const ListTile(
                           leading: Icon(Icons.add),
                           title: Text('Add my lunch room'),
@@ -97,8 +100,11 @@ class IndexState extends State<HomePage> {
                     for(var item in widget.friends ) Container(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: Card(
+                        shape: BeveledRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
                           child: ListTile(
-                          leading: Icon(Icons.timer),
+                          leading: Icon(Icons.chat_bubble),
                           title: Text("${item['start']} - Lunch with ${item['name']}"),
                           subtitle: Text('Click to join your call'),
                       )),
