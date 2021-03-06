@@ -1,7 +1,6 @@
 import 'package:letsmuk/services/auth.dart';
 import 'package:letsmuk/shared/constants.dart';
 import 'package:letsmuk/shared/loading.dart';
-import 'package:letsmuk/services/auth.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
