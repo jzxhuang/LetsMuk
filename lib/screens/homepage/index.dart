@@ -5,12 +5,30 @@ import 'package:flutter/material.dart';
 import 'package:letsmuk/shared/avatar_image.dart';
 import 'package:letsmuk/services/agora.dart';
 
+
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.user}) : super(key: key);
 
   final AgoraService _agora = AgoraService();
 
   final User user;
+  final friends = [{
+    "name": "Hyunzee",
+    "start": "12:00",
+    "end": "12:40",
+  },{
+    "name": "Alice",
+    "start": "11:00",
+    "end": "12:40",
+  },{
+    "name": "Jeff",
+    "start": "12:20",
+    "end": "12:50",
+  },{
+    "name": "Noor",
+    "start": "12:00",
+    "end": "12:40",
+  }];
 
   @override
   State<StatefulWidget> createState() => IndexState();
@@ -24,7 +42,7 @@ class IndexState extends State<HomePage> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 40),
           height: 600,
-          child: Column(
+          child: ListView(
             children: <Widget>[
               Column(children: [
                 Container(
@@ -34,8 +52,7 @@ class IndexState extends State<HomePage> {
                       textAlign: TextAlign.left,
                       overflow: TextOverflow.clip,
                       softWrap: true,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                     )),
                 AvatarImage(imageUrl: widget.user.photoURL),
                 Text(
@@ -77,12 +94,15 @@ class IndexState extends State<HomePage> {
                       softWrap: true,
                       style: TextStyle(fontSize: 18),
                     ),
-                    Card(
-                        child: const ListTile(
-                      leading: Icon(Icons.timer),
-                      title: Text('11:30 - Lunch with Hyunzee and Jeff'),
-                      subtitle: Text('Click to join your call'),
-                    ))
+                    for(var item in widget.friends ) Container(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: Card(
+                          child: ListTile(
+                          leading: Icon(Icons.timer),
+                          title: Text("${item['start']} - Lunch with ${item['name']}"),
+                          subtitle: Text('Click to join your call'),
+                      )),
+                    )
                   ],
                 ),
                 onTap: () {
