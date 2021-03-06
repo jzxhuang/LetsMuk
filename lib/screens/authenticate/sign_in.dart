@@ -25,28 +25,35 @@ class _SignInState extends State<SignIn> {
         ? Loading()
         : Scaffold(
             body: Container(
-                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+            child: Center(
                 child: Column(
-                  children: <Widget>[
-                    // Google sign in
-                    ElevatedButton(
-                        child: Text(
-                          'Sign In With Google',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        onPressed: () async {
-                          setState(() => loading = true);
-                          dynamic result = await auth.signInWithGoogle();
-                          if (result == null) {
-                            setState(() {
-                              loading = false;
-                              error =
-                                  'Could not sign in with those credentials';
-                            });
-                          }
-                        }),
-                  ],
-                )),
-          );
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "Let's Muk",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                ),
+                Image.network(
+                    "https://mystickermania.com/cdn/stickers/we-bare-bears/we-bare-bears-eating-512x512.png"),
+                // Google sign in
+                ElevatedButton(
+                    child: Text(
+                      'Sign In With Google',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onPressed: () async {
+                      setState(() => loading = true);
+                      dynamic result = await auth.signInWithGoogle();
+                      if (result == null) {
+                        setState(() {
+                          loading = false;
+                          error = 'Could not sign in with those credentials';
+                        });
+                      }
+                    }),
+              ],
+            )),
+          ));
   }
 }

@@ -86,7 +86,8 @@ class IndexState extends State<HomePage> {
                   ],
                 ),
                 onTap: () {
-                  widget._agora.joinRoom(context);
+                  widget._agora
+                      .joinRoom(context, widget.user.providerData[0].uid);
                 },
               ),
               Row(
@@ -94,7 +95,8 @@ class IndexState extends State<HomePage> {
                   Expanded(
                       child: ElevatedButton(
                     onPressed: () {
-                      widget._agora.joinRoom(context);
+                      widget._agora
+                          .joinRoom(context, widget.user.providerData[0].uid);
                     },
                     child: Text('Start Call'),
                     // color: Colors.blueAccent,
