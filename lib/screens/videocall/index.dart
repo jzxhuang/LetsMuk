@@ -18,59 +18,27 @@ class IndexState extends State<VideoCallHome> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          height: 400,
-          child: Column(
-            children: <Widget>[
-              Column(
-                children: [
-                  ListTile(
-                    title: Text(ClientRole.Broadcaster.toString()),
-                    leading: Radio(
-                      value: ClientRole.Broadcaster,
-                      groupValue: _role,
-                      onChanged: (ClientRole value) {
-                        setState(() {
-                          _role = value;
-                        });
-                      },
-                    ),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      height: 400,
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: onJoin,
+                    child: Text('Start Call'),
+                    // color: Colors.blueAccent,
+                    // textColor: Colors.white,
                   ),
-                  ListTile(
-                    title: Text(ClientRole.Audience.toString()),
-                    leading: Radio(
-                      value: ClientRole.Audience,
-                      groupValue: _role,
-                      onChanged: (ClientRole value) {
-                        setState(() {
-                          _role = value;
-                        });
-                      },
-                    ),
-                  )
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: onJoin,
-                        child: Text('Join'),
-                        // color: Colors.blueAccent,
-                        // textColor: Colors.white,
-                      ),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
+                )
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
@@ -85,7 +53,7 @@ class IndexState extends State<VideoCallHome> {
       MaterialPageRoute(
         builder: (context) => CallPage(
           channelName: AGORA_CHANNEL_NAME,
-          role: _role,
+          role: ClientRole.Broadcaster,
         ),
       ),
     );
