@@ -5,6 +5,7 @@ import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:flutter/material.dart';
 import 'package:letsmuk/shared/constants.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:letsmuk/screens/homepage/index.dart';
 
 import 'call.dart';
 
@@ -14,8 +15,6 @@ class VideoCallHome extends StatefulWidget {
 }
 
 class IndexState extends State<VideoCallHome> {
-  ClientRole _role = ClientRole.Broadcaster;
-
   @override
   Widget build(BuildContext context) {
     return Container(

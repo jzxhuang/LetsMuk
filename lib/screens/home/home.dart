@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:letsmuk/screens/videocall/index.dart';
+import 'package:letsmuk/screens/homepage/index.dart';
+
 
 import 'package:letsmuk/services/auth.dart';
 import 'package:letsmuk/shared/avatar_image.dart';
@@ -54,33 +56,35 @@ class _HomeState extends State<Home> {
             ),
           ],
         ),
-        body: Container(
-          child: Column(
-            children: <Widget>[
-              Text(
-                "Hi ${widget.user.displayName.split(" ")[0]}!",
-                style: TextStyle(
-                  color: Colors.black,
-                ),
-              ),
-              AvatarImage(imageUrl: widget.user.photoURL),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
-                  'TODO: Show a list of active meetings you can join',
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-              Text(
-                'TODO: put some stuff here related to starting a meeting?',
-                style: TextStyle(
-                  color: Colors.black,
-                ),
-              ),
-              VideoCallHome(),
-            ],
+      body: HomePage(),
+
+        // body: Container(
+        //   child: Column(
+        //     children: <Widget>[
+        //       Text(
+        //         "Hi ${widget.user.displayName.split(" ")[0]}!",
+        //         style: TextStyle(
+        //           color: Colors.black,
+        //         ),
+        //       ),
+        //       AvatarImage(imageUrl: widget.user.photoURL),
+        //       Padding(
+        //         padding: const EdgeInsets.symmetric(vertical: 8.0),
+        //         child: Text(
+        //           'TODO: Show a list of active meetings you can join',
+        //           style: TextStyle(
+        //             color: Colors.black,
+        //           ),
+        //         ),
+        //       ),
+        //       Text(
+        //         'TODO: put some stuff here related to starting a meeting?',
+        //         style: TextStyle(
+        //           color: Colors.black,
+        //         ),
+        //       ),
+        //       VideoCallHome(),
+        //     ],
           ),
         ));
   }
