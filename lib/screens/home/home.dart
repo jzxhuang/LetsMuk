@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:letsmuk/screens/videocall/index.dart';
+import 'package:letsmuk/screens/homepage/index.dart';
+
 
 import 'package:letsmuk/services/auth.dart';
 
@@ -59,7 +61,7 @@ class _HomeState extends State<Home> {
           // ),
         ],
       ),
-      body: VideoCallHome(),
+      body: HomePage(),
     );
   }
 }

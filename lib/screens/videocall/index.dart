@@ -5,6 +5,8 @@ import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:flutter/material.dart';
 import 'package:letsmuk/shared/constants.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:letsmuk/screens/homepage/index.dart';
+
 
 import 'call.dart';
 
@@ -61,10 +63,24 @@ class IndexState extends State<VideoCallHome> {
                       child: ElevatedButton(
                         onPressed: onJoin,
                         child: Text('Join'),
-                        // color: Colors.blueAccent,
-                        // textColor: Colors.white,
-                      ),
-                    )
+                      ),),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: Row(
+                  children: <Widget>[
+                      GestureDetector(
+                        child: Expanded(
+                          child: ElevatedButton(
+                            onPressed: () => {
+                              Navigator.pop(context)
+                            },
+                            child: Text('Back'),
+                          ),
+                        )
+                    ) 
                   ],
                 ),
               )
