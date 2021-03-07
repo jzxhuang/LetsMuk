@@ -22,12 +22,18 @@ class IndexState extends State<HomePage> {
   final ActiveSessionService _activeSession = new ActiveSessionService();
 
   // TODO: instead of this result, make the api call to getActiveSessions()
-  //   _activeSession.getActiveSessions();
 
   Future<String> _calculation = Future<String>.delayed(
     Duration(seconds: 2),
     () => 'Data Loaded',
   );
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _activeSession.getActiveSessions();
+  }
 
   @override
   Widget build(BuildContext context) {

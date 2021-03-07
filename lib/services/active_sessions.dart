@@ -15,8 +15,12 @@ class ActiveSessionService {
       print('adslkfj');
       print(response.body);
       // TODO: fix this JSON decoding, need to decode it as a list of AgoraChannel (not just a single one)
-      print(AgoraChannel.fromJson(jsonDecode(response.body)));
-      return AgoraChannel.fromJson(jsonDecode(response.body));
+      final foo = AgoraChannelList.fromJson(jsonDecode(response.body));
+      print(foo);
+      // final foo = AgoraChannel.fromJson(jsonDecode(response.))
+      // print(AgoraChannel.fromJson(jsonDecode(response.body)));
+      // return AgoraChannel.fromJson(jsonDecode(response.body));
+      return foo;
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.

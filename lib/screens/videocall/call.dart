@@ -17,7 +17,7 @@ class CallPage extends StatefulWidget {
   // Agora token
   final String token;
 
-  final BigInt uid;
+  final int uid;
 
   /// Creates a call page with given channel name.
   const CallPage({Key key, this.channelName, this.role, this.token, this.uid})
@@ -70,9 +70,8 @@ class _CallPageState extends State<CallPage> {
     print('LKAJFKLJDAF');
     print(widget.uid);
 
-    print(widget.uid.toInt());
     await _engine.joinChannel(
-        widget.token, widget.channelName, null, widget.uid.toInt());
+        widget.token, widget.channelName, null, widget.uid);
   }
 
   /// Create agora sdk instance and initialize

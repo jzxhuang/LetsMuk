@@ -31,7 +31,7 @@ class AgoraService {
           channelName: channelName,
           role: ClientRole.Broadcaster,
           token: agoraToken,
-          uid: BigInt.parse(uid),
+          uid: int.parse(uid.substring(0, 10)),
         ),
       ),
     );
