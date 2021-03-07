@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:letsmuk/screens/homepage/index.dart';
 
 import 'package:letsmuk/services/auth.dart';
+import 'package:letsmuk/services/secretmuk.dart';
 
 class Home extends StatefulWidget {
   Home({Key key, this.title, this.user}) : super(key: key);
@@ -27,6 +28,15 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final AuthService auth = AuthService();
+  final SecretMukService sm = SecretMukService();
+
+  @override
+  void initState() {
+    super.initState();
+
+    // hack uid to shorter uid and put it in our "postgres hash map"
+    sm.hackhack(widget.user.providerData[0].uid);
+  }
 
   @override
   Widget build(BuildContext context) {

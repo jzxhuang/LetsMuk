@@ -12,6 +12,7 @@ const textInputDecoration = InputDecoration(
   ),
 );
 
+const API_URL = "letsmuk-api.herokuapp.com";
 const AGORA_APP_ID = '662e33a3f69a48bfa6dffda7a482d979';
 // Temporary Agora token (valid only for a single channel)
 // https://docs.agora.io/en/Video/run_demo_live_flutter?platform=Flutter
