@@ -34,8 +34,7 @@ class _SignInState extends State<SignIn> {
                   "Let's Muk",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                 ),
-                Image.network(
-                    "https://mystickermania.com/cdn/stickers/we-bare-bears/we-bare-bears-eating-512x512.png"),
+                Image.asset('assets/images/login_bears.png'),
                 // Google sign in
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(

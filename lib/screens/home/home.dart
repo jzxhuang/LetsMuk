@@ -75,7 +75,10 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: HomePage(name: "Add my lunch room", type: "Who do you want to invite?", user: widget.user),
+      body: HomePage(
+          name: "Start your Muk session",
+          type: "Who do you want to invite?",
+          user: widget.user),
     );
   }
 }

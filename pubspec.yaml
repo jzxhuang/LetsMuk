@@ -48,7 +48,7 @@ dev_dependencies:
   flutter_launcher_icons: "^0.8.1"
 
 flutter_icons:
-  image_path: "assets/icon/icon.png" 
+  image_path: "assets/icon/icon.png"
   android: true
   ios: true
 
@@ -68,6 +68,8 @@ flutter:
     - assets/images/friends.png
     - assets/images/invite_only.png
     - assets/images/public.png
+    - assets/images/donut_bear.png
+    - assets/images/burrito_bear.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -104,12 +106,12 @@ flutter:
         - asset: assets/fonts/Poppins-Thin.ttf
           weight: 200
         - asset: assets/fonts/Poppins-Light.ttf
-          weight: 300          
-        - asset: assets/fonts/Poppins-Regular.ttf          
+          weight: 300
+        - asset: assets/fonts/Poppins-Regular.ttf
           weight: 400
-        - asset: assets/fonts/Poppins-Medium.ttf          
+        - asset: assets/fonts/Poppins-Medium.ttf
           weight: 500
-        - asset: assets/fonts/Poppins-SemiBold.ttf          
+        - asset: assets/fonts/Poppins-SemiBold.ttf
           weight: 600
         - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700
@@ -117,4 +119,3 @@ flutter:
           weight: 800
         - asset: assets/fonts/Poppins-ExtraBold.ttf
           weight: 900
-      
