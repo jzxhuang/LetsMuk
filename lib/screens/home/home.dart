@@ -48,6 +48,7 @@ class _HomeState extends State<Home> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
+        // backgroundColor: Colors.blue,
         // Here we take the value from the Home object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
