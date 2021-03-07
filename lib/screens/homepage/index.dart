@@ -113,32 +113,34 @@ class IndexState extends State<HomePage> {
             children = <Widget>[
               Container(
                 padding: EdgeInsets.fromLTRB(25, 25, 25, 0),
-                height: 600,
+                height: 550,
                 child: ListView(
                   children: <Widget>[
                     Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                              padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                              padding: EdgeInsets.fromLTRB(13, 10, 10, 40),
                               child: Text(
                                 "Hi ${widget.user.displayName.split(" ")[0]}!",
                                 textAlign: TextAlign.left,
                                 overflow: TextOverflow.clip,
                                 softWrap: true,
                                 style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 24),
+                                    fontWeight: FontWeight.bold, fontSize: 32),
                               )),
-                          Text(
+                          Padding(
+                              padding: EdgeInsets.fromLTRB(13, 10, 10, 10),
+                              child: Text(
                             'Who are you eating lunch with today?',
                             textAlign: TextAlign.left,
                             overflow: TextOverflow.clip,
                             softWrap: true,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600, fontSize: 16),
-                          ),
+                          ),),
                           Padding(
-                              padding: EdgeInsets.only(bottom: 25),
+                              padding: EdgeInsets.fromLTRB(13, 10, 10, 40),
                               child: GestureDetector(
                                   onTap: () {
                                     (widget.name == "Add my lunch room"
@@ -152,53 +154,92 @@ class IndexState extends State<HomePage> {
                                             widget.user.providerData[0].uid));
                                   },
                                   child: Card(
+                                    color: Color.fromRGBO(237, 230, 219, 1),
+                                    margin: EdgeInsets.fromLTRB(5, 10, 20, 10),
                                     shape: BeveledRectangleBorder(
                                       borderRadius: BorderRadius.circular(5.0),
                                     ),
-                                    child: ListTile(
+                                    child: Padding (
+                                      padding: EdgeInsets.fromLTRB(7, 13, 13, 13),
+                                      child: ListTile(
                                       leading: Icon(Icons.add),
                                       title: Text(widget.name),
                                       subtitle: Text(
-                                          widget.type),
-                                    ),
+                                          'Invite friends or have it open for others to join you!',
+                                          style: TextStyle(
+                                            fontSize: 12),
+                                          ),
+                                    ),),
                                   )))
                         ]),
                     GestureDetector(
                       child: Column(
                         children: <Widget>[
-                          Container(
-                            child: Text(
-                              'Hop into a lunch room happening now',
-                              textAlign: TextAlign.left,
-                              overflow: TextOverflow.clip,
-                              softWrap: true,
-                              style: TextStyle(fontSize: 14),
-                            ),
-                          ),
-                          for (var item in happeningNow)
-                            Container(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 1),
-                                child: Chip(
-                                  backgroundColor:
-                                      Color.fromRGBO(254, 232, 166, 1),
-                                  avatar: CircleAvatar(
-                                    backgroundColor: Colors.white,
-                                    child: Container(
-                                      width: 200,
-                                      height: 200,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                            image:
-                                                NetworkImage(item['photoURL']),
-                                            fit: BoxFit.fill),
+                          Padding(
+                              padding: EdgeInsets.fromLTRB(15, 10, 50, 10),
+                              child: Text(
+                                'Hop into a room happening right now',
+                                textAlign: TextAlign.left,
+                                overflow: TextOverflow.clip,
+                                softWrap: true,
+                                style: TextStyle(
+                                fontWeight: FontWeight.w600, fontSize: 16),
+                          ),),
+                          Row(
+                            children: <Widget>[
+                              for (var item in happeningNow)
+                                  Container(
+                                    width: 100,
+                                    height: 150,
+                                    child: Card(
+                                      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                                      color: Color.fromRGBO(254, 232, 166, 1),
+                                      shape: BeveledRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5.0),
                                       ),
-                                    ),
-                                  ),
-                                  label:
-                                      Text("Join ${item['name']}'s lunch room"),
-                                ))
+                                      child: Padding (
+                                        padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
+                                        child: ListTile(
+                                        //leading: Icon(Icons.chat_bubble),
+                                        title: Padding (
+                                          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 0),
+                                          child: CircleAvatar(
+                                            backgroundColor: Color.fromRGBO(254, 232, 166, 1),
+                                            child: Container(
+                                              margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                              // width: 99,
+                                              // height: 99,
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                image: DecorationImage(
+                                                    image:
+                                                        NetworkImage(item['photoURL']))
+                                              ),
+                                            ),
+                                          )),
+                                        subtitle: Text('Munch with ${item['name']}',
+                                            textAlign: TextAlign.left,
+                                            overflow: TextOverflow.clip,
+                                            softWrap: true,
+                                            style: TextStyle(fontSize: 10),),
+                                      ))))
+                                      // child: Column(
+                                      //   children: <Widget> [CircleAvatar(
+                                      //     backgroundColor: Color.fromRGBO(254, 232, 166, 1),
+                                      //     child: Container(
+                                      //       margin: const EdgeInsets.symmetric( horizontal: 10),
+                                      //       width: 60,
+                                      //       height: 60,
+                                      //       decoration: BoxDecoration(
+                                      //         shape: BoxShape.circle,
+                                      //         image: DecorationImage(
+                                      //             image:
+                                      //                 NetworkImage(item['photoURL']))
+                                      //       ),
+                                      //     ),
+                                      //   )])))
+                          ])
+                          
                         ],
                       ),
                       onTap: () {
@@ -209,30 +250,35 @@ class IndexState extends State<HomePage> {
                     GestureDetector(
                       child: Column(
                         children: <Widget>[
-                          Container(
-                            padding: EdgeInsets.fromLTRB(0, 30, 0, 10),
-                            child: Text(
-                              'Who are you eating lunch with today?',
-                              textAlign: TextAlign.left,
-                              overflow: TextOverflow.clip,
-                              softWrap: true,
-                              style: TextStyle(fontSize: 18),
-                            ),
-                          ),
+                          Padding(
+                              padding: EdgeInsets.fromLTRB(0, 60, 50, 10),
+                              child: Text(
+                                'See who else you can join soon',
+                                //textAlign: TextAlign.left,
+                                overflow: TextOverflow.clip,
+                                softWrap: true,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600, fontSize: 16),
+                              )),
                           for (var item in widget.friends)
                             Container(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                               child: Card(
+                                  color: Color.fromRGBO(237, 230, 219, 1),
                                   shape: BeveledRectangleBorder(
                                     borderRadius: BorderRadius.circular(5.0),
-                                  ),
+                                  ), child: Padding (
+                                      padding: EdgeInsets.fromLTRB(0,5,5,5),
                                   child: ListTile(
                                     leading: Icon(Icons.chat_bubble),
                                     title: Text(
-                                        "${item['start']} - Lunch with ${item['name']}"),
-                                    subtitle: Text('Click to join your call'),
+                                          "${item['start']} - Lunch with ${item['name']}",),
+                                    subtitle: Text('Click to join your call',
+                                      style: TextStyle(
+                                            fontSize: 12),
+                                          ),
                                   )),
-                            )
+                            ))
                         ],
                       ),
                       onTap: () {
@@ -240,18 +286,23 @@ class IndexState extends State<HomePage> {
                             .joinRoom(context, widget.user.providerData[0].uid);
                       },
                     ),
-                    Row(
+                    Container(
+                      padding: EdgeInsets.fromLTRB(10, 40, 10, 40),
+                      child: Row(
                       children: <Widget>[
                         Expanded(
-                            child: ElevatedButton(
-                          onPressed: () {
-                            widget._agora.joinRoom(
-                                context, widget.user.providerData[0].uid);
-                          },
-                          child: Text("Let's Eat"),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.brown,
+                            ),
+                            onPressed: () {
+                              widget._agora.joinRoom(
+                                  context, widget.user.providerData[0].uid);
+                            },
+                            child: Text("Let's Eat"),
                         )),
                       ],
-                    )
+                    ))
                   ],
                 ),
               ),

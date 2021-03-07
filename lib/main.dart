@@ -28,7 +28,15 @@ class MyApp extends StatelessWidget {
         value: AuthService().user,
         child: MaterialApp(
           title: 'Flutter Demo',
-          theme: ApplicationTheme(context),
+          theme: //ApplicationTheme(context),
+          ThemeData(
+              primaryColor: Colors.brown,
+              accentColor: Colors.orange,
+              textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Poppins'),
+              primaryTextTheme: Theme.of(context).textTheme.apply(fontFamily: 'Poppins',),
+              accentTextTheme: Theme.of(context).textTheme.apply(fontFamily: 'Poppins'),
+              visualDensity: VisualDensity.adaptivePlatformDensity,
+            ),
           // theme: ThemeData(
           //   // This is the theme of your application.
           //   //

@@ -20,7 +20,7 @@ class AvatarImage extends StatelessWidget {
         height: height,
         decoration: new BoxDecoration(
             shape: BoxShape.circle,
-            border: Border.all(color: Colors.yellow, width: 1.5),
+            border: Border.all(color: Color.fromRGBO(237, 230, 219, 1), width: 1.5),
             image: new DecorationImage(
                 fit: BoxFit.fill,
                 image: new NetworkImage(
