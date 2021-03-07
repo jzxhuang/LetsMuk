@@ -5,6 +5,7 @@ import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
 import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
 import 'package:flutter/material.dart';
+import 'package:letsmuk/services/active_sessions.dart';
 import 'package:letsmuk/shared/constants.dart';
 
 class CallPage extends StatefulWidget {
@@ -28,6 +29,8 @@ class CallPage extends StatefulWidget {
 }
 
 class _CallPageState extends State<CallPage> {
+  final ActiveSessionService _activeSession = new ActiveSessionService();
+
   final _users = <int>[];
   final _infoStrings = <String>[];
   bool muted = false;

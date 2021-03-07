@@ -19,20 +19,22 @@ class HomePage extends StatefulWidget {
 }
 
 class IndexState extends State<HomePage> {
-  final ActiveSessionService _activeSession = new ActiveSessionService();
+  final ActiveSessionService _activeSessionService = new ActiveSessionService();
 
-  // TODO: instead of this result, make the api call to getActiveSessions()
+  Future<List<AgoraChannel>> activeChannels;
 
-  Future<String> _calculation = Future<String>.delayed(
-    Duration(seconds: 2),
-    () => 'Data Loaded',
-  );
+  // = _activeSessionService.getActiveSessions();
+
+  // Future<String> activeChannels = Future<String>.delayed(
+  //   Duration(seconds: 2),
+  //   () => 'Data Loaded',
+  // );
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    _activeSession.getActiveSessions();
+    // TODO: re-fetch every 10 seconds?
+    activeChannels = _activeSessionService.getActiveSessions();
   }
 
   @override
@@ -42,12 +44,17 @@ class IndexState extends State<HomePage> {
         child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 40),
             height: 600,
-            child: FutureBuilder<String>(
+            child: FutureBuilder<List<AgoraChannel>>(
               future:
-                  _calculation, // a previously-obtained Future<String> or null
-              builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                  activeChannels, // a previously-obtained Future<String> or null
+              builder: (BuildContext context,
+                  AsyncSnapshot<List<AgoraChannel>> snapshot) {
                 List<Widget> children;
                 if (snapshot.hasData) {
+                  print('has data');
+                  print(snapshot.data);
+                  // snapshot.data.forEach(e => e.users[0] );
+
                   children = <Widget>[
                     Column(
                       children: <Widget>[

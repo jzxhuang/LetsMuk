@@ -13,7 +13,6 @@ class AgoraService {
   Future<void> joinRoom(context, String uid) async {
     print('x');
     print(uid);
-    print(BigInt.parse(uid));
 
     // await for camera and mic permissions before pushing video page
     await _handleCameraAndMic(Permission.camera);
