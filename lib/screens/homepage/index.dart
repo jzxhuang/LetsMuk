@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:letsmuk/shared/avatar_image.dart';
 import 'package:letsmuk/services/agora.dart';
+import 'package:letsmuk/screens/schedule/schedule.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -75,14 +76,19 @@ class IndexState extends State<HomePage> {
               Container(
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
                   child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Schedule(user: widget.user)),
+                        );
+                      },
                       child: Card(
                         shape: BeveledRectangleBorder(
                           borderRadius: BorderRadius.circular(5.0),
                         ),
                         child: const ListTile(
                           leading: Icon(Icons.add),
-                          title: Text('Add my lunch room'),
+                          title: Text("Add my lunch room"),
                           subtitle:
                               Text('Add your availability for this week!'),
                         ),
