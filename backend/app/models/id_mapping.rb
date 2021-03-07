@@ -1,0 +1,2 @@
+class IdMapping < ApplicationRecord
+end

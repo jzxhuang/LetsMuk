@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_06_165622) do
+ActiveRecord::Schema.define(version: 2021_03_07_001857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
+
+  create_table "id_mappings", force: :cascade do |t|
+    t.string "agora_uid", null: false
+    t.string "google_uid", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "time_blocks", force: :cascade do |t|
     t.datetime "start", null: false

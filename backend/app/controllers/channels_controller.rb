@@ -14,8 +14,8 @@ class ChannelsController < ApplicationController
       usrs_http, usrs_request = get_request_objects("#{API_URL}/dev/v1/channel/user/#{ENV['AGORA_APP_ID']}/#{channel['channel_name']}")
       usrs_json = JSON.parse(usrs_http.request(usrs_request).body)
       users = {
-        broadcasters: usrs_json['data']['broadcasters'],
-        audience: usrs_json['data']['audience']
+        broadcasters: usrs_json['data']['broadcasters'].map { |str| IdMapping.where(agora_uid: str).first&.google_uid },
+        audience: usrs_json['data']['audience'].map { |str| IdMapping.where(agora_uid: str).first&.google_uid }
       }
       channel['users'] = users
       result << channel

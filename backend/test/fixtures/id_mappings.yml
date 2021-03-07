@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  agora_uid: MyString
+  google_uid: MyString
+
+two:
+  agora_uid: MyString
+  google_uid: MyString

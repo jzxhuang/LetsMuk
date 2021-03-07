@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   resources :time_blocks
   get 'token', to: 'channels#get_token'
   get 'active_channels', to: 'channels#active'
+  post 'super_secret_muk', to: 'id_mappings#create'
+  get 'google_uid', to: 'id_mappings#google_uid'
+  get 'agora_uid', to: 'id_mappings#agora_uid'
 end
