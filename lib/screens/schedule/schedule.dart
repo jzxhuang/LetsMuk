@@ -55,13 +55,13 @@ class _ScheduleState extends State<Schedule> {
 
     Widget _invitations() {
         return Container(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: SizedBox(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              child: SizedBox(
                 height: 400.0,
                 child: GridView.count(
                     primary: false,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
                     crossAxisCount: 2,
                     children: <Widget>[
                         GestureDetector(
@@ -69,23 +69,24 @@ class _ScheduleState extends State<Schedule> {
                                 padding: const EdgeInsets.symmetric(horizontal: 41),
                                 child: Text(
                                     'FRIENDS',
+                                    textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: (first_enabled
-                                            ? Colors.blue
+                                            ? Colors.brown
                                             : Colors.grey
                                         ),
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 18,
+                                        fontSize: 16,
                                         fontFamily: "Poppins"
                                     )
                                 ),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.all(
-                                        Radius.circular(3)
+                                        Radius.circular(5)
                                     ),
                                     border: Border.all(
                                         color: (first_enabled
-                                            ? Colors.blue
+                                            ? Colors.brown
                                             : Colors.grey
                                         )
                                     ),
@@ -106,23 +107,24 @@ class _ScheduleState extends State<Schedule> {
                                 padding: const EdgeInsets.symmetric(horizontal: 10),
                                 child: Text(
                                     'BRING FRIENDS',
+                                    textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: (second_enabled
-                                            ? Colors.blue
+                                            ? Colors.brown
                                             : Colors.grey
                                         ),
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 18,
+                                        fontSize: 16,
                                         fontFamily: "Poppins"
                                     )
                                 ),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.all(
-                                        Radius.circular(3)
+                                        Radius.circular(5)
                                     ),
                                     border: Border.all(
                                         color: (second_enabled
-                                            ? Colors.blue
+                                            ? Colors.brown
                                             : Colors.grey
                                         )
                                     ),
@@ -140,26 +142,27 @@ class _ScheduleState extends State<Schedule> {
                         ),
                         GestureDetector(
                             child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 45),
+                                padding: const EdgeInsets.symmetric(horizontal: 0),
                                 child: Text(
                                     'PUBLIC',
+                                    textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: (third_enabled
-                                            ? Colors.blue
+                                            ? Colors.brown
                                             : Colors.grey
                                         ),
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 18,
+                                        fontSize: 16,
                                         fontFamily: "Poppins"
                                     )
                                 ),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.all(
-                                        Radius.circular(3)
+                                        Radius.circular(5)
                                     ),
                                     border: Border.all(
                                         color: (third_enabled
-                                            ? Colors.blue
+                                            ? Colors.brown
                                             : Colors.grey
                                         )
                                     ),
@@ -180,23 +183,24 @@ class _ScheduleState extends State<Schedule> {
                                 padding: const EdgeInsets.symmetric(horizontal: 22),
                                 child: Text(
                                     'INVITE ONLY',
+                                    textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: (fourth_enabled
-                                            ? Colors.blue
+                                            ? Colors.brown
                                             : Colors.grey
                                         ),
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 18,
+                                        fontSize: 16,
                                         fontFamily: "Poppins"
                                     )
                                 ),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.all(
-                                        Radius.circular(3)
+                                        Radius.circular(5)
                                     ),
                                     border: Border.all(
                                         color: (fourth_enabled
-                                            ? Colors.blue
+                                            ? Colors.brown
                                             : Colors.grey
                                         )
                                     ),
@@ -240,7 +244,9 @@ class _ScheduleState extends State<Schedule> {
                         children: <Widget>[
                             FlatButton(
                                 minWidth: 150,
-                                child: Text('CANCEL'),
+                                child: Text('CANCEL',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(color: Colors.brown)),
                                 color: Colors.white,
                                 onPressed: () {
                                     Navigator.pop(context);
@@ -249,7 +255,7 @@ class _ScheduleState extends State<Schedule> {
                             FlatButton(
                                 minWidth: 150,
                                 child: Text('CREATE'),
-                                color: Colors.blue,
+                                color: Colors.brown,
                                 onPressed: () {
                                     Navigator.push(
                                         context,

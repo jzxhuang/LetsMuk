@@ -38,6 +38,9 @@ class _SignInState extends State<SignIn> {
                     "https://mystickermania.com/cdn/stickers/we-bare-bears/we-bare-bears-eating-512x512.png"),
                 // Google sign in
                 ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.brown,
+                    ),
                     child: Text(
                       'Sign In With Google',
                       style: TextStyle(color: Colors.white),
