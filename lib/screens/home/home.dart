@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: HomePage(user: widget.user),
+      body: HomePage(name: "Add my lunch room", type: "", user: widget.user),
     );
   }
 }
