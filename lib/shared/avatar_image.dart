@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AvatarImage extends StatelessWidget {
-  AvatarImage({Key key, this.imageUrl}) : super(key: key);
+  AvatarImage({Key key, this.imageUrl, this.width = 100, this.height = 100})
+      : super(key: key);
 
   final String imageUrl;
+  final double width;
+  final double height;
+
   // This widget is the root of your application.
 
   // Create the initialization Future outside of `build`:
@@ -12,11 +16,11 @@ class AvatarImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: 100.0,
-        height: 100.0,
+        width: width,
+        height: height,
         decoration: new BoxDecoration(
             shape: BoxShape.circle,
-            border: Border.all(color: Colors.yellow, width: 2.0),
+            border: Border.all(color: Colors.yellow, width: 1.5),
             image: new DecorationImage(
                 fit: BoxFit.fill,
                 image: new NetworkImage(

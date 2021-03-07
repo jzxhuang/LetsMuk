@@ -7,7 +7,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:letsmuk/models/agora_channel.dart';
 import 'package:letsmuk/services/active_sessions.dart';
-import 'package:letsmuk/shared/avatar_image.dart';
 import 'package:letsmuk/services/agora.dart';
 import 'package:letsmuk/screens/schedule/schedule.dart';
 
@@ -88,7 +87,6 @@ class IndexState extends State<HomePage> {
   }
 
   void initialize() async {
-    print('hello');
     for (var item in happeningNow) {
       final response = await fetchFriendPic(item['uid']);
       Map<String, dynamic> responseJson = json.decode(response.body);
@@ -114,64 +112,57 @@ class IndexState extends State<HomePage> {
 
             children = <Widget>[
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
+                padding: EdgeInsets.fromLTRB(25, 25, 25, 0),
                 height: 600,
                 child: ListView(
                   children: <Widget>[
-                    Column(children: [
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
-                          child: Text(
-                            "Hi ${widget.user.displayName.split(" ")[0]}!",
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                              padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                              child: Text(
+                                "Hi ${widget.user.displayName.split(" ")[0]}!",
+                                textAlign: TextAlign.left,
+                                overflow: TextOverflow.clip,
+                                softWrap: true,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 24),
+                              )),
+                          Text(
+                            'Who are you eating lunch with today?',
                             textAlign: TextAlign.left,
                             overflow: TextOverflow.clip,
                             softWrap: true,
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 24),
-                          )),
-                      AvatarImage(imageUrl: widget.user.photoURL),
-                      Text(
-                        'Who are you eating lunch with today?',
-                        textAlign: TextAlign.left,
-                        overflow: TextOverflow.clip,
-                        softWrap: true,
-                        style: TextStyle(fontSize: 18),
-                      ),
-                    ]),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: Text(
-                        'TODO: Show a list of active meetings you can join',
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                    Container(
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
-                        child: GestureDetector(
-                            onTap: () {
-                              (widget.name == "Add my lunch room"
-                                  ? Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              Schedule(user: widget.user)),
-                                    )
-                                  : widget._agora.joinRoom(context,
-                                      widget.user.providerData[0].uid));
-                            },
-                            child: Card(
-                              shape: BeveledRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                              child: ListTile(
-                                leading: Icon(Icons.add),
-                                title: Text(widget.name),
-                                subtitle: Text(
-                                    widget.type),
-                              ),
-                            ))),
+                                fontWeight: FontWeight.w600, fontSize: 16),
+                          ),
+                          Padding(
+                              padding: EdgeInsets.only(bottom: 25),
+                              child: GestureDetector(
+                                  onTap: () {
+                                    (widget.name == "Add my lunch room"
+                                        ? Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => Schedule(
+                                                    user: widget.user)),
+                                          )
+                                        : widget._agora.joinRoom(context,
+                                            widget.user.providerData[0].uid));
+                                  },
+                                  child: Card(
+                                    shape: BeveledRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                    child: ListTile(
+                                      leading: Icon(Icons.add),
+                                      title: Text(widget.name),
+                                      subtitle: Text(
+                                          'Add your availability for this week!'),
+                                    ),
+                                  )))
+                        ]),
                     GestureDetector(
                       child: Column(
                         children: <Widget>[
@@ -290,12 +281,9 @@ class IndexState extends State<HomePage> {
               )
             ];
           }
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: children,
-            ),
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: children,
           );
         },
       ),

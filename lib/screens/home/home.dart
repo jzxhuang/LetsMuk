@@ -5,6 +5,7 @@ import 'package:letsmuk/screens/homepage/index.dart';
 
 import 'package:letsmuk/services/auth.dart';
 import 'package:letsmuk/services/secretmuk.dart';
+import 'package:letsmuk/shared/avatar_image.dart';
 
 class Home extends StatefulWidget {
   Home({Key key, this.title, this.user}) : super(key: key);
@@ -51,7 +52,16 @@ class _HomeState extends State<Home> {
         // backgroundColor: Colors.blue,
         // Here we take the value from the Home object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        leading: Padding(
+          child: AvatarImage(
+              imageUrl: widget.user.photoURL, width: 16, height: 16),
+          padding: EdgeInsets.all(10),
+        ),
+
+        title: Text(
+          widget.title,
+          style: TextStyle(color: Colors.white),
+        ),
         // elevation: 0.0,
         actions: <Widget>[
           TextButton(
