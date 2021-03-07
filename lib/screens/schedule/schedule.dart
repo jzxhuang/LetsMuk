@@ -29,8 +29,9 @@ class _ScheduleState extends State<Schedule> {
                 'Host My Lunch Room',
                 style: TextStyle(
                     color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
+                    fontWeight: FontWeight.w900,
+                    fontSize: 29,
+                    fontFamily: 'Poppins'
                 )
             ),
         );
@@ -65,7 +66,7 @@ class _ScheduleState extends State<Schedule> {
                     children: <Widget>[
                         GestureDetector(
                             child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 37),
+                                padding: const EdgeInsets.symmetric(horizontal: 41),
                                 child: Text(
                                     'FRIENDS',
                                     style: TextStyle(
@@ -73,8 +74,9 @@ class _ScheduleState extends State<Schedule> {
                                             ? Colors.blue
                                             : Colors.grey
                                         ),
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.w600,
                                         fontSize: 18,
+                                        fontFamily: "Poppins"
                                     )
                                 ),
                                 decoration: BoxDecoration(
@@ -95,13 +97,13 @@ class _ScheduleState extends State<Schedule> {
                             ),onTap:(){
                                 setState(() {
                                     first_enabled = true;
-                                    type = ": FRIENDS";
+                                    type = "For friends";
                                 });
                             },
                         ),
                         GestureDetector(
                             child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 5),
+                                padding: const EdgeInsets.symmetric(horizontal: 10),
                                 child: Text(
                                     'BRING FRIENDS',
                                     style: TextStyle(
@@ -109,8 +111,9 @@ class _ScheduleState extends State<Schedule> {
                                             ? Colors.blue
                                             : Colors.grey
                                         ),
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.w600,
                                         fontSize: 18,
+                                        fontFamily: "Poppins"
                                     )
                                 ),
                                 decoration: BoxDecoration(
@@ -131,13 +134,13 @@ class _ScheduleState extends State<Schedule> {
                             ),onTap:(){
                                 setState(() {
                                     second_enabled = true;
-                                    type = ": BRING FRIENDS";
+                                    type = "For bring friends";
                                 });
                             }
                         ),
                         GestureDetector(
                             child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 38),
+                                padding: const EdgeInsets.symmetric(horizontal: 45),
                                 child: Text(
                                     'PUBLIC',
                                     style: TextStyle(
@@ -145,8 +148,9 @@ class _ScheduleState extends State<Schedule> {
                                             ? Colors.blue
                                             : Colors.grey
                                         ),
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.w600,
                                         fontSize: 18,
+                                        fontFamily: "Poppins"
                                     )
                                 ),
                                 decoration: BoxDecoration(
@@ -167,13 +171,13 @@ class _ScheduleState extends State<Schedule> {
                             ),onTap:(){
                                 setState(() {
                                     third_enabled = true;
-                                    type = ": PUBLIC";
+                                    type = "For public";
                                 });
                             }
                         ),
                         GestureDetector(
                             child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 18),
+                                padding: const EdgeInsets.symmetric(horizontal: 22),
                                 child: Text(
                                     'INVITE ONLY',
                                     style: TextStyle(
@@ -181,8 +185,9 @@ class _ScheduleState extends State<Schedule> {
                                             ? Colors.blue
                                             : Colors.grey
                                         ),
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.w600,
                                         fontSize: 18,
+                                        fontFamily: "Poppins"
                                     )
                                 ),
                                 decoration: BoxDecoration(
@@ -203,7 +208,7 @@ class _ScheduleState extends State<Schedule> {
                             ),onTap:(){
                                 setState(() {
                                     fourth_enabled = true;
-                                    type = ": INVITE ONLY";
+                                    type = "For invite only";
                                 });
                             }
                         ),
@@ -217,7 +222,7 @@ class _ScheduleState extends State<Schedule> {
     Widget build(BuildContext context) {
         return Scaffold(
             body: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 25),
             child: ListView(
                 children: <Widget>[
                     _title(),
@@ -225,8 +230,9 @@ class _ScheduleState extends State<Schedule> {
                     Text(
                         'This is for...',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w700,
                             fontSize: 18,
+                            fontFamily: "Poppins"
                         )
                     ),
                     _invitations(),
