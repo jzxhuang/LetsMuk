@@ -70,6 +70,7 @@ flutter:
     - assets/images/public.png
     - assets/images/donut_bear.png
     - assets/images/burrito_bear.png
+    - assets/images/login_bears.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

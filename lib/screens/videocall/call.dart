@@ -70,8 +70,6 @@ class _CallPageState extends State<CallPage> {
     VideoEncoderConfiguration configuration = VideoEncoderConfiguration();
     configuration.dimensions = VideoDimensions(1920, 1080);
     await _engine.setVideoEncoderConfiguration(configuration);
-    print('LKAJFKLJDAF');
-    print(widget.uid);
 
     await _engine.joinChannel(
         widget.token, widget.channelName, null, widget.uid);
@@ -308,7 +306,7 @@ class _CallPageState extends State<CallPage> {
         child: Stack(
           children: <Widget>[
             _viewRows(),
-            _panel(),
+            // _panel(),
             _toolbar(),
           ],
         ),
