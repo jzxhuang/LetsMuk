@@ -98,7 +98,7 @@ class _ScheduleState extends State<Schedule> {
                 ),
                 GestureDetector(
                     child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: Text('BRING FRIENDS',
                             textAlign: TextAlign.center,
                             style: TextStyle(
@@ -154,7 +154,7 @@ class _ScheduleState extends State<Schedule> {
                     }),
                 GestureDetector(
                     child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 22),
+                        padding: const EdgeInsets.symmetric(horizontal: 19),
                         child: Text('INVITE ONLY',
                             textAlign: TextAlign.center,
                             style: TextStyle(
