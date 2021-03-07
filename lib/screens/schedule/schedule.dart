@@ -16,6 +16,8 @@ class Schedule extends StatefulWidget {
 class _ScheduleState extends State<Schedule> {
     TextEditingController nameController = new TextEditingController();
 
+    String type = "";
+
     bool first_enabled = false;
     bool second_enabled = false;
     bool third_enabled = false;
@@ -93,6 +95,7 @@ class _ScheduleState extends State<Schedule> {
                             ),onTap:(){
                                 setState(() {
                                     first_enabled = true;
+                                    type = ": FRIENDS";
                                 });
                             },
                         ),
@@ -128,6 +131,7 @@ class _ScheduleState extends State<Schedule> {
                             ),onTap:(){
                                 setState(() {
                                     second_enabled = true;
+                                    type = ": BRING FRIENDS";
                                 });
                             }
                         ),
@@ -163,6 +167,7 @@ class _ScheduleState extends State<Schedule> {
                             ),onTap:(){
                                 setState(() {
                                     third_enabled = true;
+                                    type = ": PUBLIC";
                                 });
                             }
                         ),
@@ -198,6 +203,7 @@ class _ScheduleState extends State<Schedule> {
                             ),onTap:(){
                                 setState(() {
                                     fourth_enabled = true;
+                                    type = ": INVITE ONLY";
                                 });
                             }
                         ),
@@ -239,9 +245,9 @@ class _ScheduleState extends State<Schedule> {
                                 child: Text('CREATE'),
                                 color: Colors.blue,
                                 onPressed: () {
-                                    Navigator.pop(
+                                    Navigator.push(
                                         context,
-                                        MaterialPageRoute(builder: (context) => HomePage(user: widget.user)),
+                                        MaterialPageRoute(builder: (context) => HomePage(name: nameController.text, type: type, user: widget.user)),
                                     );
                                 },
                             )
