@@ -167,9 +167,9 @@ class IndexState extends State<HomePage> {
                               ),
                               child: ListTile(
                                 leading: Icon(Icons.add),
-                                title: Text(widget.name + widget.type),
+                                title: Text(widget.name),
                                 subtitle: Text(
-                                    'Add your availability for this week!'),
+                                    widget.type),
                               ),
                             ))),
                     GestureDetector(
