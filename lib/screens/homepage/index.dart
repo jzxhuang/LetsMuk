@@ -159,7 +159,7 @@ class IndexState extends State<HomePage> {
                                       leading: Icon(Icons.add),
                                       title: Text(widget.name),
                                       subtitle: Text(
-                                          'Add your availability for this week!'),
+                                          widget.type),
                                     ),
                                   )))
                         ]),
