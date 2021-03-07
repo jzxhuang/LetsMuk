@@ -66,7 +66,7 @@ class _ScheduleState extends State<Schedule> {
                     children: <Widget>[
                         GestureDetector(
                             child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 41),
+                                padding: const EdgeInsets.symmetric(horizontal: 30),
                                 child: Text(
                                     'FRIENDS',
                                     textAlign: TextAlign.center,

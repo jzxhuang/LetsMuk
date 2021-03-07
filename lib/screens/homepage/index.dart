@@ -185,7 +185,9 @@ class IndexState extends State<HomePage> {
                                 style: TextStyle(
                                 fontWeight: FontWeight.w600, fontSize: 16),
                           ),),
-                          Row(
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Row(
                             children: <Widget>[
                               for (var item in happeningNow)
                                   Container(
@@ -238,8 +240,8 @@ class IndexState extends State<HomePage> {
                                       //       ),
                                       //     ),
                                       //   )])))
-                          ])
-                          
+                            ])
+                          )
                         ],
                       ),
                       onTap: () {
