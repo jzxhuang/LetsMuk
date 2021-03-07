@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:letsmuk/shared/avatar_image.dart';
 import 'package:letsmuk/services/agora.dart';
+import 'package:letsmuk/screens/schedule/schedule.dart';
 
 Future<http.Response>  fetchFriendPic(String uid) async{
   return await http.get(Uri.https('content-people.googleapis.com', '/v1/people/' + uid,
@@ -26,11 +27,13 @@ var happeningNow = [{
   }];
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key, this.user}) : super(key: key);
+  HomePage({Key key, this.name, this.type, this.user}) : super(key: key);
 
   final AgoraService _agora = AgoraService();
 
+  final String name;
   final User user;
+  final String type;
   final friends = [{
     "name": "Hyunzee",
     "start": "12:00",
@@ -111,14 +114,22 @@ class IndexState extends State<HomePage> {
               Container(
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
                   child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        (widget.name == "Add my lunch room"
+                          ? Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Schedule(user: widget.user)),
+                            )
+                          : widget._agora.joinRoom(context)
+                        );
+                      },
                       child: Card(
                         shape: BeveledRectangleBorder(
                           borderRadius: BorderRadius.circular(5.0),
                         ),
-                        child: const ListTile(
+                        child: ListTile(
                           leading: Icon(Icons.add),
-                          title: Text('Add my lunch room'),
+                          title: Text(widget.name + widget.type),
                           subtitle:
                               Text('Add your availability for this week!'),
                         ),
